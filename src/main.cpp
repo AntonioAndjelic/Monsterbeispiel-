@@ -1,10 +1,14 @@
 #include <Servo.h> 
 #include <DHT.h> 
+
 #define DHTPIN 7 
 #define DHTTYPE DHT11
+
 DHT dht(DHTPIN,DHTTYPE)
+
 Servo servo1;
 Servo servo2;
+
 int ledPins[]={2,3,4,5,6,8,9,10};
 int buttonPins[]={A0,A1,A2};
 int potPins[]={A3,A4};
@@ -181,8 +185,8 @@ void combinedActions(){
   safetyCheck();
   controlServos();
   playBuzzer()}
+
   void loop2(){
-    
     combinedActions();
     displayStatus();
     delay(100)
