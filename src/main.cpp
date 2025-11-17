@@ -112,7 +112,7 @@ void playBuzzer(){
 
 void displayStatus(){
   Serial.print("Temperatur: ");
-  Serial.print(" °C, Licht: ");
+  Serial.print(", Servos: ");
 
   Serial.print(temp);
   Serial.print(" °C, Licht: ");
