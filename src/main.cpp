@@ -39,7 +39,7 @@ void setup(){
   for(int i=0;i<numButtons;i++){
     pinMode(buttonPins[i],INPUT_PULLUP);
   }
-  randomSeed(analogRead(0))
+  randomSeed(analogRead(0));
 }
 
 void loop(){
@@ -78,16 +78,16 @@ void handleButtons(){
 
 void performButtonAction(int btn){
   if(btn==0){
-    blinkAll(3,100)
+    blinkAll(3,100);
   }else if(btn==1){
-    chaseForward(100)
+    chaseForward(100);
   }else if(btn==2){chaseBackward(100)}
 }void updateLeds(){
   for(int i=0;i<numLeds;i++){
     if(ledState[i]==LOW){
-      digitalWrite(ledPins[i],HIGH)
+      digitalWrite(ledPins[i],HIGH);
     }else{
-      digitalWrite(ledPins[i],LOW)
+      digitalWrite(ledPins[i],LOW);
     }
   }
 }
@@ -98,7 +98,7 @@ void controlServos(){
   int angle1=map(potVal1,0,1023,0,180);
   int angle2=map(potVal2,0,1023,0,180);
   servo1.write(angle1);
-  servo2.write(angle2)
+  servo2.write(angle2);
 }
 
 void playBuzzer(){
@@ -106,7 +106,7 @@ void playBuzzer(){
   {
     tone(buzzer,1000,200);
   }else{
-    noTone(buzzer)
+    noTone(buzzer);
   }
 }
 
@@ -118,19 +118,19 @@ void displayStatus(){
   Serial.print(", Servos: ");
   Serial.print(analogRead(potPins[0]));
   Serial.print(",");
-  Serial.println(analogRead(potPins[1]))
+  Serial.println(analogRead(potPins[1]));
 }
 
 void blinkAll(int times,int delayTime){
   for(int i=0;i<times;i++){
     for(int j=0;j<numLeds;j++){
-      digitalWrite(ledPins[j],HIGH)
+      digitalWrite(ledPins[j],HIGH);
     }
     delay(delayTime);
     for(int j=0;j<numLeds;j++){
-      digitalWrite(ledPins[j],LOW)
+      digitalWrite(ledPins[j],LOW);
     }
-    delay(delayTime)
+    delay(delayTime);
   }
 }
 
@@ -138,7 +138,7 @@ void chaseForward(int delayTime){
   for(int i=0;i<numLeds;i++){
     digitalWrite(ledPins[i],HIGH);
     delay(delayTime);
-    digitalWrite(ledPins[i],LOW)
+    digitalWrite(ledPins[i],LOW);
   }
 }
 
@@ -146,7 +146,8 @@ void chaseBackward(int delayTime){
   for(int i=numLeds-1;i>=0;i--){
     digitalWrite(ledPins[i],HIGH);
     delay(delayTime);
-    digitalWrite(ledPins[i],LOW)}
+    digitalWrite(ledPins[i],LOW);
+    }
   }
 
 void complexPattern(){
@@ -156,24 +157,26 @@ for(int i=0;i<5;i++){
   chaseBackward(50)}
   for(int i=0;i<numLeds;i++){
     if(i%2==0){
-      digitalWrite(ledPins[i],HIGH)
+      digitalWrite(ledPins[i],HIGH);
     }else{
-      digitalWrite(ledPins[i],LOW)
+      digitalWrite(ledPins[i],LOW);
     }
   }
   delay(200);
   for(int i=0;i<numLeds;i++){
-    digitalWrite(ledPins[i],LOW)
+    digitalWrite(ledPins[i],LOW);
   }
 }
+
 void safetyCheck(){
-  if(temp>40){for(int i=0;i<numLeds;i++){
-    digitalWrite(ledPins[i],HIGH)
+  if(temp>40){for(int i=0;i<numLeds;i++)
+  {
+    digitalWrite(ledPins[i],HIGH);
   }
   tone(buzzer,2000,500);
   delay(500);
   for(int i=0;i<numLeds;i++){
-    digitalWrite(ledPins[i],LOW)
+    digitalWrite(ledPins[i],LOW);
   }
 }
 if(lightLevel<100){
@@ -184,10 +187,11 @@ void combinedActions(){
   complexPattern();
   safetyCheck();
   controlServos();
-  playBuzzer()}
+  playBuzzer();
+  }
 
   void loop2(){
     combinedActions();
     displayStatus();
-    delay(100)
+    delay(100);
   }
