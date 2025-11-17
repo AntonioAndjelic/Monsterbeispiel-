@@ -112,6 +112,7 @@ void playBuzzer(){
 
 void displayStatus(){
   Serial.print("Temperatur: ");
+
   Serial.print(", Servos: ");
 
   Serial.print(temp);
